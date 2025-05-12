@@ -12,8 +12,8 @@ import java.util.List;
 public interface PacienteRepository extends JpaRepository<Paciente, Long>{
 
     //JPQL
-    @Query("SELECT p FROM Paciente p WHERE p.apellidos= :apellido")
-    List<Paciente> findByApellidos(String apellidos);
+    @Query(value = "SELECT * FROM paciente WHERE apellidos = :apellidos", nativeQuery = true)
+    List<Paciente> findByApellidos(@Param("apellidos") String apellidos);
 
     //SQL Nativo
     @Query(value = "SELECT * FROM paciente WHERE correo = :correo", nativeQuery = true)
